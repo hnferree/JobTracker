@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Job Scout Tracker",
+  "version": "0.13.0",
+  "description": "Track jobs with HiringCafe drawer auto-scan, Rippling/LinkedIn support, manual tracking, and application autofill.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "downloads",
+    "webNavigation",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "Job Scout Tracker",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true
+    }
+  ]
+}

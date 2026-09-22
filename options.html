@@ -1,0 +1,18 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Job Scout Tracker Settings</title><link rel="stylesheet" href="options.css"></head>
+<body><main>
+<h1>Job Scout Tracker Settings</h1>
+<section class="panel"><h2>Knowledge Keywords</h2><p>Add anything you want the job dashboard to check. Enter one keyword or phrase per line.</p><textarea id="keywords" rows="12" spellcheck="false"></textarea><div class="examples">Examples: C#, ASP.NET, SQL, Docker, React, Kafka, Azure, AWS, microservices</div></section>
+<section class="panel"><h2>Application Autofill Profile</h2><p>These common answers are used whenever you click <strong>Fill Application Form</strong>.</p>
+<label for="linkedin">LinkedIn profile</label><input id="linkedin" type="text">
+<label for="workAuthorizedUS">Legally authorized to work in the U.S.</label><select id="workAuthorizedUS"><option>Yes</option><option>No</option></select>
+<label for="ethnicity">Ethnicity / Race</label><input id="ethnicity" type="text">
+<label for="veteran">Veteran status</label><select id="veteran"><option>No</option><option>Yes</option><option>Prefer not to answer</option></select>
+<label for="gender">Gender</label><select id="gender"><option>Female</option><option>Male</option><option>Non-binary</option><option>Prefer not to answer</option></select>
+<label for="hispanic">Hispanic / Latino</label><select id="hispanic"><option>No</option><option>Yes</option><option>Prefer not to answer</option></select></section>
+<section class="panel"><div class="section-header"><div><h2>Custom Form Fill Rules</h2><p class="no-bottom">Create reusable rules. They are saved in Chrome settings — no extension rebuild is needed.</p></div><button id="addRule" type="button">+ Add Rule</button></div>
+<div class="rule-help">Example: <code>desired salary</code> → <code>150000</code><br>The extension checks the field label, name, id, placeholder, aria-label, and nearby question text.</div><div id="rules"></div></section>
+<div class="actions"><button id="save">Save Settings</button><span id="message"></span></div>
+</main>
+<template id="ruleTemplate"><div class="rule-row"><div><label>Find form field containing</label><input class="rule-match" type="text" placeholder="e.g. desired salary"></div><div><label>Fill with</label><input class="rule-value" type="text" placeholder="e.g. 150000"></div><div class="rule-type-wrap"><label>Match type</label><select class="rule-type"><option value="contains">Contains</option><option value="exact">Exact</option></select></div><button class="remove-rule" type="button" title="Remove rule">✕</button></div></template>
+<script src="options.js"></script></body></html>

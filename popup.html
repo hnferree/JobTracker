@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Job Scout Tracker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <div class="topbar">
+      <h1>Job Scout Tracker</h1>
+      <button id="options" class="icon-btn" title="Edit keywords">⚙</button>
+    </div>
+<div id="loading">Nothing is tracked until you click <strong>Load Job</strong>.</div>
+
+
+<section class="card load-card">
+  <div class="card-title-row">
+    <h2>Job Tracking</h2>
+  </div>
+  <button id="loadJob" class="load-btn" type="button">Load Job</button>
+  <div id="loadResult" class="context">Nothing is saved until you click Load Job.</div>
+</section>
+    <section id="autofillCard" class="card always-card">
+      <div class="card-title-row"><h2>Application Autofill</h2><button id="editProfile" class="small-btn">Settings</button></div>
+      <p class="autofill-help">Works on application pages even when there is no job description, including embedded Greenhouse/ATS forms.</p>
+      <button id="fillApplication" class="fill-btn">Fill Application Form</button>
+      <div id="fillResult" class="context"></div>
+    </section>
+
+
+    
+<section class="card manual-card">
+  <div class="card-title-row">
+    <h2>Manual Job Entry</h2>
+    <button id="toggleManual" class="small-btn" type="button">Add Manually</button>
+  </div>
+  <div id="manualEntry" hidden>
+    <p class="autofill-help">Use this whenever a site will not scan.</p>
+    <div class="manual-grid">
+      <label>Job Title<input id="manualTitle" type="text"></label>
+      <label>Company<input id="manualCompany" type="text"></label>
+      <label>Job ID<input id="manualJobId" type="text"></label>
+      <label>Website<input id="manualWebsite" type="text"></label>
+      <label class="manual-wide">Job URL<input id="manualUrl" type="text"></label>
+      <label>Pay Range<input id="manualSalary" type="text"></label>
+      <label>Travel<input id="manualTravel" type="text" placeholder="No / Yes / 25%"></label>
+      <label class="manual-wide">Notes<textarea id="manualNotes" rows="2"></textarea></label>
+    </div>
+    <div class="manual-status-row">
+      <button id="manualViewed" type="button">Save Viewed</button>
+      <button id="manualApplied" type="button" class="manual-primary">Add as Applied</button>
+      <button id="manualCrossed" type="button">Cross Off</button>
+    </div>
+    <div id="manualResult" class="context"></div>
+  </div>
+</section>
+
+    <section id="job" hidden>
+      <div id="appliedBanner" class="banner applied" hidden>✓ You already applied to this job</div>
+      <div id="crossedBanner" class="banner crossed" hidden>✕ You previously crossed this job off</div>
+
+      <div class="headline">
+        <strong id="title"></strong>
+        <span id="company"></span>
+      </div>
+
+      <div class="identity-grid">
+        <div><span class="label">Job ID</span><span id="jobId"></span></div>
+        <div><span class="label">Website</span><span id="website"></span></div>
+      </div>
+
+      <div class="status-label">Your status</div>
+      <div class="status-row">
+        <button data-status="viewed">Viewed</button>
+        <button data-status="applied">Applied</button>
+        <button data-status="crossed_off">Cross Off</button>
+      </div>
+
+      <section class="card">
+        <h2>Job Snapshot</h2>
+        <div class="snapshot-row">
+          <span>Travel</span>
+          <strong id="travel"></strong>
+        </div>
+        <div id="travelContext" class="context"></div>
+
+        <div class="snapshot-row salary-row">
+          <span>Pay Range</span>
+          <strong id="salary"></strong>
+        </div>
+        <div id="salarySource" class="context"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-title-row">
+          <h2>Knowledge Keywords</h2>
+          <button id="editKeywords" class="small-btn">Edit</button>
+        </div>
+        <div id="keywordGrid" class="keyword-grid"></div>
+      </section>
+
+      <section class="card">
+        <label for="notes">Notes</label>
+        <textarea id="notes" rows="3" placeholder="Recruiter, concerns, interview notes…"></textarea>
+        <button id="saveNotes" class="secondary">Save notes</button>
+      </section>
+
+      <div id="lastScan" class="last-scan"></div>
+    </section>
+
+    <section id="notJob" hidden>
+      <p>This page does not look like a job description yet. If the site loaded the job dynamically, try <strong>Scan Job</strong> again after the description appears.</p>
+    </section>
+
+    <footer>
+      <button id="exportCsv" class="linkish">Export all jobs to CSV</button>
+    </footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
